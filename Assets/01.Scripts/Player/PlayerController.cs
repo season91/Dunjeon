@@ -10,7 +10,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInputHandler playerInput;
     [SerializeField] private Rigidbody playerRigidbody;
     private Transform playerTransform;
-    [SerializeField] private float moveSpeed = 5f;
+    public float moveSpeed = 5f;
+    
+    // 점프에 필요한 변수
+    public LayerMask groundLayerMask;
+    public float jumpPower;
     
     // 회전에 필요한 변수
     public Transform cameraContainer;
@@ -36,11 +40,13 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerInput.OnLookInput += Look;
+        playerInput.OnJumpInput += Jump;
     }
 
     private void OnDisable()
     {
         playerInput.OnLookInput -= Look;
+        playerInput.OnJumpInput -= Jump;
     }
 
 
@@ -73,4 +79,35 @@ public class PlayerController : MonoBehaviour
         // 캐릭터 좌표 mouseDelta.x * lookSensitivity
         playerTransform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0); // 위,아래 캐릭터 각도 회전
     }
+
+    private void Jump()
+    {
+        if (IsGrounded())
+        {
+            playerRigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+        }
+    }
+    
+    private bool IsGrounded()
+    {
+        Vector3 origin = playerTransform.position;
+        float offset = 0.2f;
+        float rayHeightOffset = 0.1f; // 발보다 살짝 위에서 시작
+
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(origin + (playerTransform.forward * offset) + Vector3.up * -rayHeightOffset, Vector3.down),
+            new Ray(origin + (-playerTransform.forward * offset) + Vector3.up * -rayHeightOffset, Vector3.down),
+            new Ray(origin + (playerTransform.right * offset) + Vector3.up * -rayHeightOffset, Vector3.down),
+            new Ray(origin + (-playerTransform.right * offset) + Vector3.up * -rayHeightOffset, Vector3.down)
+        };
+
+        for (int i = 0; i < rays.Length; i++)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    
 }
