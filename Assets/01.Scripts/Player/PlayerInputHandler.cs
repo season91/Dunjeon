@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// [전달역할] InputSystem 입력 수신 받아 처리할 대상에게 전달
+/// [요청/이벤트 처리] InputSystem 이벤트 입력 수신 받아 처리할 대상에게 전달
 /// </summary>
 public class PlayerInputHandler : MonoBehaviour
 {
@@ -44,11 +44,19 @@ public class PlayerInputHandler : MonoBehaviour
         jump.started += OnJumpStarted;
     }
 
-    private void DisablePlayerInput()
+    private void DisableInputAction()
     {
         move.Disable();
         look.Disable();
         jump.Disable();
+    }
+
+    private void RemoveInputAction()
+    {
+        move.performed -= OnMovePerformed;
+        move.canceled -= OnMoveCanceled;
+        look.performed -= OnLookPerformed;
+        jump.started -= OnJumpStarted;
     }
     
     // 이동 WASD
