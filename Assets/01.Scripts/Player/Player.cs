@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
     private void Reset()
     {
-        controller = GetComponent<PlayerController>();
+        controller = GetComponentInChildren<PlayerController>();
     }
 
     private void Awake()
