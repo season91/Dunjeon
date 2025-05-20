@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// [주도적으로 처리] 직접 움직임 처리
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IJumpable
 {
     // 이동에 필요한 변수
     [SerializeField] private PlayerInputHandler playerInput;
@@ -102,5 +102,9 @@ public class PlayerController : MonoBehaviour
 
         return false;
     }
-    
+
+    public void Launch(float force)
+    {
+        playerRigidbody.AddForce(Vector3.up * force, ForceMode.Impulse);
+    }
 }
