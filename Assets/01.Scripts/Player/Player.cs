@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -5,6 +6,8 @@ public class Player : MonoBehaviour
     // 플레이어 동작 - 컨트롤러
     public PlayerController controller;
 
+    // 플레이어 아이템
+    public Action addItem;
     private void Reset()
     {
         controller = GetComponentInChildren<PlayerController>();

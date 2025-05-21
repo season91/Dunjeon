@@ -18,9 +18,12 @@ public class CameraRaycaster : MonoBehaviour
     public float maxCheckDistance; // 최대 체크 거리 얼마나 멀리 있는거 체크할지
     public LayerMask layerMask; // 어떤 레이어 추출한건지 - Player 제외한 모두로 설정함
 
-    // 충돌 - 상호 작용 아이템 정보
+    // 상호 작용 아이템 정보
     private GameObject curInteractGameObject; // 현재 상호작용 아이템
-    private IInteractable curInteractable; // 아이템의 공통 함수 사용
+
+    // 상호 작용 델리게이트
+    public event Action<IInteractable> OnInteractChanged;
+    
 
     private void Awake()
     {
@@ -50,9 +53,10 @@ public class CameraRaycaster : MonoBehaviour
                 // 충돌시 아이템이 현재인터렉터블 아이템에 존재하지 않는다면
                 if(hit.collider.gameObject != curInteractGameObject && hit.collider.GetComponent<IInteractable>() is IInteractable interactable)
                 {
+                    // 레이는 감지만 
+                    // 아래 처리는 상호작용 쪽에서 처리하도록 변경
                     curInteractGameObject = hit.collider.gameObject;
-                    curInteractable = interactable;
-                    UIManager.Instance.ShowDescriptionPrompt(curInteractable.GetPromptText()); //설명출력해주기
+                    OnInteractChanged?.Invoke(interactable);
                 }
                 else
                 {
@@ -61,9 +65,9 @@ public class CameraRaycaster : MonoBehaviour
             }
             else // 걸린게 없을 때, 정보 없애주기
             {
+                // 레이는 감지만 
                 curInteractGameObject = null;
-                curInteractable = null;
-                UIManager.Instance.HideDescriptionPrompt();
+                OnInteractChanged?.Invoke(null);
             }
         }
     }

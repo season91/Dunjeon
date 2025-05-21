@@ -8,7 +8,7 @@ using UnityEngine;
 public interface IInteractable
 {
     public string GetPromptText(); // UI에 표시할 설명
-    // public void OnInteract(); // E 키 상호작용
+    public void OnInteract(); // E 키 상호작용
 }
 public class ItemObject : MonoBehaviour, IInteractable
 {
@@ -26,10 +26,11 @@ public class ItemObject : MonoBehaviour, IInteractable
         return str;
     }
 
-    // public void OnInteract()
-    // {
-    //     // E키로 상호작용이 되었을 때
-    //     // 아이템 습득이 되고, 현재 object는 파괴
-    //     
-    // }
+    public void OnInteract()
+    {
+        // E키로 상호작용이 되었을 때
+        // 아이템 습득이 되고, 현재 object는 파괴
+        CharacterRegistry.Player.addItem?.Invoke();
+        Destroy(gameObject);
+    }
 }

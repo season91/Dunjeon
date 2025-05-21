@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour, IJumpable
     public float moveSpeed = 5f;
     
     // 점프에 필요한 변수
-    public LayerMask groundLayerMask;
     public float jumpPower;
     
     // 회전에 필요한 변수
@@ -53,7 +52,8 @@ public class PlayerController : MonoBehaviour, IJumpable
     {
         Move(); // 물리연산이라 FixedUpdate
     }
-    
+
+    #region 움직임 관련
     // 실제 이동 처리. 계속 처리
     private void Move()
     {
@@ -107,8 +107,11 @@ public class PlayerController : MonoBehaviour, IJumpable
         return isGrounded;
     }
 
+    // 점프대 실제 점프 처리
     public void Launch(float force)
     {
         playerRigidbody.AddForce(Vector3.up * force, ForceMode.Impulse);
     }
+    #endregion
+
 }

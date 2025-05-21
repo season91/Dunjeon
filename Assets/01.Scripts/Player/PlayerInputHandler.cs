@@ -12,11 +12,13 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction move;
     private InputAction look;
     private InputAction jump;
+    private InputAction interaction;
     
     // 전달해줄 값
     public Vector2 MoveInput { get; private set; }
     public event Action<Vector2> OnLookInput; // 지속적으로 읽을게 아니고 값이 변경될 때만 반응하고자 델리게이트로 전달
     public event Action OnJumpInput;
+    public event Action OnInteractionInput; 
     
     private void Reset()
     {
@@ -30,10 +32,12 @@ public class PlayerInputHandler : MonoBehaviour
         move = _playerInput.actions["Move"];
         look = _playerInput.actions["Look"];
         jump = _playerInput.actions["Jump"];
+        interaction = _playerInput.actions["Interaction"];
 
         move.Enable();
         look.Enable();
         jump.Enable();
+        interaction.Enable();
     }
 
     private void Start()
@@ -42,6 +46,7 @@ public class PlayerInputHandler : MonoBehaviour
         move.canceled += OnMoveCanceled;
         look.performed += OnLookPerformed;
         jump.started += OnJumpStarted;
+        interaction.performed += OnInteraction;
     }
 
     private void DisableInputAction()
@@ -49,6 +54,7 @@ public class PlayerInputHandler : MonoBehaviour
         move.Disable();
         look.Disable();
         jump.Disable();
+        interaction.Disable();
     }
 
     private void RemoveInputAction()
@@ -57,6 +63,7 @@ public class PlayerInputHandler : MonoBehaviour
         move.canceled -= OnMoveCanceled;
         look.performed -= OnLookPerformed;
         jump.started -= OnJumpStarted;
+        interaction.performed -= OnInteraction;
     }
     
     // 이동 WASD
@@ -80,6 +87,12 @@ public class PlayerInputHandler : MonoBehaviour
     // 점프
     private void OnJumpStarted(InputAction.CallbackContext context)
     {
-        OnJumpInput.Invoke();  
+        OnJumpInput?.Invoke();  
+    }
+    
+    // 상호작용 E InputAction
+    private void OnInteraction(InputAction.CallbackContext context)
+    {
+        OnInteractionInput?.Invoke();
     }
 }
