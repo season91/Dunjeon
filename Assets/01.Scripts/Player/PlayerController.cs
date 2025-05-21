@@ -86,6 +86,8 @@ public class PlayerController : MonoBehaviour, IJumpable
         Vector3 origin = playerTransform.position;
         float offset = 0.2f;
         float rayHeightOffset = 0.1f; // 발보다 살짝 위에서 시작
+        float rayDistance = 0.25f;    // 레이 길이
+        bool isGrounded = false;
 
         Ray[] rays = new Ray[4]
         {
@@ -97,10 +99,12 @@ public class PlayerController : MonoBehaviour, IJumpable
 
         for (int i = 0; i < rays.Length; i++)
         {
-            return true;
+            Debug.DrawRay(rays[i].origin, rays[i].direction * rayDistance, Color.green); // Scene에서 시각화
+            isGrounded =  true;
+            break;
         }
 
-        return false;
+        return isGrounded;
     }
 
     public void Launch(float force)

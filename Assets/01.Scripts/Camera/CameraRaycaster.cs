@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// [컴포넌트] CameraContainer 기준으로 Ray
 /// </summary>
-public class AimRaycaster : MonoBehaviour
+public class CameraRaycaster : MonoBehaviour
 {
     // 플레이어 몸 기준
     private Transform playerTransform; // ray 시작 위치
@@ -19,7 +19,7 @@ public class AimRaycaster : MonoBehaviour
     public LayerMask layerMask; // 어떤 레이어 추출한건지 - Player 제외한 모두로 설정함
 
     // 충돌 - 상호 작용 아이템 정보
-    public GameObject curInteractGameObject; // 현재 상호작용 아이템
+    private GameObject curInteractGameObject; // 현재 상호작용 아이템
     private IInteractable curInteractable; // 아이템의 공통 함수 사용
 
     private void Awake()

@@ -831,7 +831,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1820,7 +1820,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 55
-  curInteractGameObject: {fileID: 0}
 --- !u!1 &1854408258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,7 +3100,7 @@ GameObject:
   - component: {fileID: 2223712464431484021}
   - component: {fileID: 2223712464432615093}
   - component: {fileID: 4092019354859368570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowpolyTerrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
