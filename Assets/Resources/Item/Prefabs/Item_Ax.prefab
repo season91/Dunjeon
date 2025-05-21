@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5647111054138623472}
   - component: {fileID: 1786145170452677967}
   - component: {fileID: 645273279097577099}
-  - component: {fileID: 3673009638990277411}
+  - component: {fileID: 2206572262092966706}
   m_Layer: 0
   m_Name: Item_Ax
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302842045345799531}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9, y: 0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -107,7 +107,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2487380500608498712, guid: 6675c6557a13efc4aacb9db75446046f, type: 3}
---- !u!114 &3673009638990277411
+--- !u!114 &2206572262092966706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f69ef3e1ceac29498e2c94e5440f457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 988152922df2a6446828fb72b0d931cd, type: 2}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1601996387343495008}
   - component: {fileID: 4447137423663956987}
   - component: {fileID: 709878791715416779}
-  - component: {fileID: 8883766535633795025}
+  - component: {fileID: 5260430774119143344}
   m_Layer: 0
   m_Name: Item_Wood
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6960267684563724751}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -109,7 +109,7 @@ CapsuleCollider:
   m_Height: 2.0357015
   m_Direction: 0
   m_Center: {x: -0.0031770468, y: 0.12708363, z: 0.00023217499}
---- !u!114 &8883766535633795025
+--- !u!114 &5260430774119143344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f69ef3e1ceac29498e2c94e5440f457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: ead1509fec429f14b9c86d9df665876a, type: 2}

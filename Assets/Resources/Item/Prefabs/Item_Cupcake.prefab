@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7489729651267948875}
   - component: {fileID: 2213387156089104334}
   - component: {fileID: 6116134206110617465}
-  - component: {fileID: 4863038775216756662}
+  - component: {fileID: 4120336447695852515}
   m_Layer: 0
   m_Name: Item_Cupcake
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2199133650600606011}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.5, y: 0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12271368, y: 0.12232481, z: 0.12651125}
   m_Center: {x: 0, y: 0.061162405, z: 0}
---- !u!114 &4863038775216756662
+--- !u!114 &4120336447695852515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,4 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f69ef3e1ceac29498e2c94e5440f457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: e3613826c47737d41be4ebed974336d6, type: 2}

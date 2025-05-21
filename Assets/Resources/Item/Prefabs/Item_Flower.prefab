@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4343148229670346445}
   - component: {fileID: 7314718720464735638}
   - component: {fileID: 5068589052366940306}
-  - component: {fileID: 572777801890023669}
+  - component: {fileID: 2206809231806321352}
+  - component: {fileID: 6334628362284140734}
   m_Layer: 0
   m_Name: Item_Flower
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4315102410168397973}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -85,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &572777801890023669
+--- !u!114 &2206809231806321352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,4 +98,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f69ef3e1ceac29498e2c94e5440f457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: fc0ec500811371745adf3f1c1e9bc1dc, type: 2}
+--- !u!64 &6334628362284140734
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4315102410168397973}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 5e29eb426a57a534b92c5c4f3eb82a9b, type: 3}

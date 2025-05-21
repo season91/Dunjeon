@@ -1,0 +1,83 @@
+using System;
+using UnityEngine;
+
+/// <summary>
+/// [컴포넌트] CameraContainer 기준으로 Ray
+/// </summary>
+public class AimRaycaster : MonoBehaviour
+{
+    // 플레이어 몸 기준
+    private Transform playerTransform; // ray 시작 위치
+    private Camera _camera; // ray 방향
+    
+    // 상호작용 시간 체크 - Update에서 매프레임 호출 방지를 위해 마지막 체크 시간 기준으로 검증
+    public float checkRate = 0.05f; // 상호작용 오브젝트 체크 시간. 카메라 기준으로 Ray 쏠건데, 주기 얼마로 할건지
+    private float lastCheckTime; // 마지막 상호작용 체크 시간
+    
+    // 레이캐스트에서 사용할 정보
+    public float maxCheckDistance; // 최대 체크 거리 얼마나 멀리 있는거 체크할지
+    public LayerMask layerMask; // 어떤 레이어 추출한건지 - Player 제외한 모두로 설정함
+
+    // 충돌 - 상호 작용 아이템 정보
+    public GameObject curInteractGameObject; // 현재 상호작용 아이템
+    private IInteractable curInteractable; // 아이템의 공통 함수 사용
+
+    private void Awake()
+    {
+        _camera = Camera.main;
+    }
+
+    private void Start()
+    {
+        playerTransform = CharacterRegistry.Player.transform;
+    }
+    
+    private void Update()
+    {
+        if (Time.time - lastCheckTime > checkRate) // 매프레임 호출 방지를 위해 마지막 체크 시간 기준으로 검증
+        {
+            lastCheckTime = Time.time;
+            Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red);
+            
+            if (Physics.Raycast(ray, out RaycastHit hit, maxCheckDistance, layerMask))
+            {
+                Vector3 screenPosition = _camera.WorldToScreenPoint(hit.point);
+                UIManager.Instance.SetAimPosition(screenPosition);
+                
+                DrawCircle(hit.point, 0.15f, Color.blue);
+        
+                // 충돌시 아이템이 현재인터렉터블 아이템에 존재하지 않는다면
+                if(hit.collider.gameObject != curInteractGameObject && hit.collider.GetComponent<IInteractable>() is IInteractable interactable)
+                {
+                    curInteractGameObject = hit.collider.gameObject;
+                    curInteractable = interactable;
+                    UIManager.Instance.ShowDescriptionPrompt(curInteractable.GetPromptText()); //설명출력해주기
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else // 걸린게 없을 때, 정보 없애주기
+            {
+                curInteractGameObject = null;
+                curInteractable = null;
+                UIManager.Instance.HideDescriptionPrompt();
+            }
+        }
+    }
+    
+    private void DrawCircle(Vector3 center, float radius, Color color, int segments = 20) {
+        float angleStep = 360f / segments;
+        Vector3 lastPoint = center + new Vector3(Mathf.Cos(0), 0, Mathf.Sin(0)) * radius;
+
+        for (int i = 1; i <= segments; i++) {
+            float angle = i * angleStep * Mathf.Deg2Rad;
+            Vector3 nextPoint = center + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+
+            Debug.DrawLine(lastPoint, nextPoint, color);
+            lastPoint = nextPoint;
+        }
+    }
+}
