@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// [컴포넌트] CameraContainer 기준으로 Ray
+/// [컴포넌트] CameraContainer 기준으로 Ray. Ray는 감지만 
 /// </summary>
 public class CameraRaycaster : MonoBehaviour
 {
@@ -46,8 +46,6 @@ public class CameraRaycaster : MonoBehaviour
                 // 충돌시 아이템이 현재인터렉터블 아이템에 존재하지 않는다면
                 if(hit.collider.gameObject != curInteractGameObject && hit.collider.GetComponent<IInteractable>() is IInteractable interactable)
                 {
-                    // 레이는 감지만 
-                    // 아래 처리는 상호작용 쪽에서 처리하도록 변경
                     curInteractGameObject = hit.collider.gameObject;
                     OnInteractChanged?.Invoke(interactable);
                 }
@@ -58,7 +56,6 @@ public class CameraRaycaster : MonoBehaviour
             }
             else // 걸린게 없을 때, 정보 없애주기
             {
-                // 레이는 감지만 
                 curInteractGameObject = null;
                 OnInteractChanged?.Invoke(null);
             }

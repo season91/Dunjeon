@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 7314718720464735638}
   - component: {fileID: 5068589052366940306}
   - component: {fileID: 2206809231806321352}
-  - component: {fileID: 6334628362284140734}
+  - component: {fileID: 6752596203824386819}
   m_Layer: 0
   m_Name: Item_Flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 126
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4343148229670346445
 Transform:
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: fc0ec500811371745adf3f1c1e9bc1dc, type: 2}
---- !u!64 &6334628362284140734
-MeshCollider:
+--- !u!65 &6752596203824386819
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,7 +117,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 5e29eb426a57a534b92c5c4f3eb82a9b, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.32371986, y: 0.46199438, z: 0.32115865}
+  m_Center: {x: 0, y: 0.23099719, z: -0.002410695}

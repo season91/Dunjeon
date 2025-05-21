@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 159908149116419018}
   - component: {fileID: 1601996387343495008}
   - component: {fileID: 4447137423663956987}
-  - component: {fileID: 709878791715416779}
   - component: {fileID: 5260430774119143344}
+  - component: {fileID: 7553145281142801037}
   m_Layer: 0
   m_Name: Item_Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 126
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &159908149116419018
 Transform:
@@ -86,8 +86,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &709878791715416779
-CapsuleCollider:
+--- !u!114 &5260430774119143344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960267684563724751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f69ef3e1ceac29498e2c94e5440f457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: ead1509fec429f14b9c86d9df665876a, type: 2}
+--- !u!65 &7553145281142801037
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,21 +117,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.141301
-  m_Height: 2.0357015
-  m_Direction: 0
-  m_Center: {x: -0.0031770468, y: 0.12708363, z: 0.00023217499}
---- !u!114 &5260430774119143344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6960267684563724751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f69ef3e1ceac29498e2c94e5440f457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: ead1509fec429f14b9c86d9df665876a, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2, y: 0.24778296, z: 0.24497804}
+  m_Center: {x: 0, y: 0.123906456, z: 0.00023217499}
