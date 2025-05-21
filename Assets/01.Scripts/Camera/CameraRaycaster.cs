@@ -6,8 +6,7 @@ using UnityEngine;
 /// </summary>
 public class CameraRaycaster : MonoBehaviour
 {
-    // 플레이어 몸 기준
-    private Transform playerTransform; // ray 시작 위치
+    // 카메라 기준
     private Camera _camera; // ray 방향
     
     // 상호작용 시간 체크 - Update에서 매프레임 호출 방지를 위해 마지막 체크 시간 기준으로 검증
@@ -23,16 +22,10 @@ public class CameraRaycaster : MonoBehaviour
 
     // 상호 작용 델리게이트
     public event Action<IInteractable> OnInteractChanged;
-    
 
     private void Awake()
     {
         _camera = Camera.main;
-    }
-
-    private void Start()
-    {
-        playerTransform = CharacterRegistry.Player.transform;
     }
     
     private void Update()

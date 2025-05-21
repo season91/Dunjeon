@@ -50,7 +50,4 @@ public class UIManager : MonoBehaviour
     public void SetAimPosition(Vector3 screenPos) {
         aim.position = screenPos;
     }
-    
-    public Vector3 GetAimPosition() => aim.position;
-
 }
