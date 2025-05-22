@@ -105,22 +105,18 @@ public class CSVImporter
         
             if (typeCount == consumableValues.Length)
             {
-                ItemDataConsumable consumable = new ItemDataConsumable();
-
                 for (int i = 0; i < typeCount; i++)
                 {
+                    ItemDataConsumable consumable = new ItemDataConsumable();
                     consumable.type = (ConsumableType) System.Enum.Parse(typeof(ConsumableType), consumableTypes[i]);
                     consumable.value = int.Parse(consumableValues[i]);
-                
+                    Debug.Log(consumableTypes[i] + ">"+(ConsumableType) System.Enum.Parse(typeof(ConsumableType), consumableTypes[i]));
                     consumables[i] = consumable;
                 }
-            }
-            else
-            {
-                Debug.Log("Consumable type 과 value 개수가 다름.");
+                return consumables;
             }
         }
-        else if(consumableType.Length > 0)
+        else if(consumableType != "" && !consumableType.Contains("|") && consumableType != null)
         {
             consumables = new ItemDataConsumable[1];
             
@@ -130,9 +126,8 @@ public class CSVImporter
             
             consumables[0] = consumable;
         }
-
+        
         return consumables;
-
     }
 }
 #endif

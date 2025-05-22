@@ -79,11 +79,11 @@ public class UIInventory : MonoBehaviour
     {
         if (IsOpen())
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         else
         {
-            this.gameObject.SetActive(true);
+            gameObject.SetActive(true);
         }
     }
     
@@ -128,8 +128,8 @@ public class UIInventory : MonoBehaviour
         
         for (int i = 0; i < selectedItemData.consumables.Length; i++)
         {
-            itemStatName.text = selectedItemData.consumables[i].type.ToString()+"\n";
-            itemStatValue.text = selectedItemData.consumables[i].value.ToString()+"\n";
+            itemStatName.text += selectedItemData.consumables[i].type.ToString()+"\n";
+            itemStatValue.text += selectedItemData.consumables[i].value.ToString()+"\n";
             
         }
         
