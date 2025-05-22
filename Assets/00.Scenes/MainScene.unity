@@ -3427,10 +3427,10 @@ MonoBehaviour:
   itemDescription: {fileID: 1483919480}
   itemStatName: {fileID: 925200663}
   itemStatValue: {fileID: 2108557587}
-  useButton: {fileID: 1014959008}
-  equipButton: {fileID: 1723178647}
-  unEquipButton: {fileID: 1092000531}
-  dropButton: {fileID: 238842784}
+  useButton: {fileID: 1014959010}
+  equipButton: {fileID: 1723178649}
+  unEquipButton: {fileID: 1092000533}
+  dropButton: {fileID: 238842786}
 --- !u!1 &1155929615
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,6 +4609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2045945464}
+  statusHandler: {fileID: 1324724609}
 --- !u!54 &1651329768
 Rigidbody:
   m_ObjectHideFlags: 0

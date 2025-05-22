@@ -45,10 +45,12 @@ public class UIManager : MonoBehaviour
         inventory =  GetComponentInChildren<UIInventory>();
     }
 
-    public void SetHp(float value) => statusGroup.AddHp(value);
+    public void AddHealth(float value) => statusGroup.AddHp(value);
+    public void SubstractHealth(float value) => statusGroup.SubtractHp(value);
 
     // 아이템 타입에 따라 수정 확장 필요
-    public void SetHunger(float value) => statusGroup.SubtractHunger(value);
+    public void SubstractHunger(float value) => statusGroup.SubtractHunger(value);
+    public void AddHunger(float value) => statusGroup.AddHunger(value);
     
     // 아이템 출력
     public void ShowDescriptionPrompt(string description) => prompt.ShowDescriptionPrompt(description);
