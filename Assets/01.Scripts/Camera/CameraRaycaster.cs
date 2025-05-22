@@ -38,8 +38,8 @@ public class CameraRaycaster : MonoBehaviour
             
             if (Physics.Raycast(ray, out RaycastHit hit, maxCheckDistance, layerMask))
             {
-                Vector3 screenPosition = _camera.WorldToScreenPoint(hit.point);
-                UIManager.Instance.SetAimPosition(screenPosition);
+                //Vector3 screenPosition = _camera.WorldToScreenPoint(hit.point);
+                //UIManager.Instance.SetAimPosition(screenPosition);
                 
                 DrawCircle(hit.point, 0.15f, Color.blue);
         

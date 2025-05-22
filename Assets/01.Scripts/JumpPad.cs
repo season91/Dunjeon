@@ -8,7 +8,7 @@ public interface IJumpable
 public class JumpPad : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
-
+    
     private void Reset()
     {
         jumpForce = 100f;

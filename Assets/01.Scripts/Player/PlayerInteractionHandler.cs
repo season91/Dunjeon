@@ -1,6 +1,6 @@
 using UnityEngine;
 /// <summary>
-/// [요청/이벤트 처리] 상호작용 이벤트 후처리
+/// [요청/이벤트 처리] 상호작용 이벤트 후처리, E버튼과 레이캐스트로 접근시 2가지 이벤트를 관리
 /// </summary>
 public class PlayerInteractionHandler : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     private void OnEnable()
     {
         raycaster.OnInteractChanged += InteractChanged;
-        inputHandler.OnInteractionInput += InteractInput;
+        inputHandler.OnInteractionInput += InteractInput; 
     }
 
     private void OnDisable()
@@ -35,7 +35,7 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     #region 상호작용 관련
 
-    // 상호작용 E 버튼 눌렀을 때
+    // 상호작용 E 버튼 눌렀을 때 상호작용처리
     public void InteractInput()
     {
         if (curInteractable != null)

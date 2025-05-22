@@ -22,7 +22,7 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public string GetPromptText()
     {
-        string str = $"{data.displayName}\n{data.description}";
+        string str = $"\n{data.displayName}\n{data.description}";
         return str;
     }
 
@@ -30,7 +30,7 @@ public class ItemObject : MonoBehaviour, IInteractable
     {
         // E키로 상호작용이 되었을 때
         // 아이템 습득이 되고, 현재 object는 파괴
-        CharacterRegistry.Player.addItem?.Invoke();
+        InventoryManager.AddItem(data);
         Destroy(gameObject);
     }
 }

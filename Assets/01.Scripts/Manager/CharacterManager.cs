@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CharacterRegistry
+public static class CharacterManager
 {
     // 캐릭터 등록 전용 클래스
     // 호출 하는 곳에서 초기화 

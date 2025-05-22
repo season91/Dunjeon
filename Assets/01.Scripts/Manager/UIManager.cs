@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// UIManager 싱글톤
@@ -7,11 +8,15 @@ public class UIManager : MonoBehaviour
 {
     private static UIManager instance = null;
 
+    // 상태
     private UIStatusGroup statusGroup;
-    private UIPrompt prompt;
-
-    [SerializeField] private RectTransform aim;
     
+    // 상호작용 출력
+    private UIPrompt prompt;
+    
+    // 인벤토리
+    private UIInventory inventory;
+
     public static UIManager Instance
     {
         get
@@ -26,6 +31,7 @@ public class UIManager : MonoBehaviour
     {
         statusGroup = GetComponentInChildren<UIStatusGroup>();
         prompt = GetComponentInChildren<UIPrompt>();
+        inventory =  GetComponentInChildren<UIInventory>();
     }
 
     private void Awake()
@@ -36,6 +42,7 @@ public class UIManager : MonoBehaviour
         }
         statusGroup = GetComponentInChildren<UIStatusGroup>();
         prompt = GetComponentInChildren<UIPrompt>();
+        inventory =  GetComponentInChildren<UIInventory>();
     }
 
     public void SetHp(float value) => statusGroup.AddHp(value);
@@ -47,7 +54,9 @@ public class UIManager : MonoBehaviour
     public void ShowDescriptionPrompt(string description) => prompt.ShowDescriptionPrompt(description);
     public void HideDescriptionPrompt() => prompt.HideDescriptionPrompt();
     
-    public void SetAimPosition(Vector3 screenPos) {
-        aim.position = screenPos;
-    }
+    // 인벤토리 열기
+    public void ToggleInventory() => inventory.Toggle();
+    
+    // 인벤토리 UI refresh
+    public void InventoryRefresh(List<ItemData> inventoryItems) => inventory.UpdateInventoryUI(inventoryItems);
 }

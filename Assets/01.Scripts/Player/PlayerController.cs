@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour, IJumpable
     public float lookSensitivity = 0.1f; // 회전 민감도
     private float camCurXRot; // 마우스 델타값 적용
     
+    // 인벤토리 Open/Close 필요한 변수
     
     private void Reset()
     {
@@ -40,12 +42,14 @@ public class PlayerController : MonoBehaviour, IJumpable
     {
         playerInput.OnLookInput += Look;
         playerInput.OnJumpInput += Jump;
+        playerInput.OnInventoryInput += ToggleInventory;
     }
 
     private void OnDisable()
     {
         playerInput.OnLookInput -= Look;
         playerInput.OnJumpInput -= Jump;
+        playerInput.OnInventoryInput -= ToggleInventory;
     }
 
     private void FixedUpdate()
@@ -114,4 +118,14 @@ public class PlayerController : MonoBehaviour, IJumpable
     }
     #endregion
 
+    #region 인벤토리 관련
+
+    // OnInventoryInput에 인벤토리 open/close 연결해주어야함
+    // UI는 그리는 역할만 해야하기 때문
+    public void ToggleInventory()
+    {
+        UIManager.Instance.ToggleInventory();
+    }
+
+    #endregion
 }
