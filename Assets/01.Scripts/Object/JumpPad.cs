@@ -1,17 +1,17 @@
 using System;
 using UnityEngine;
 
-public interface IJumpable
-{
-    void Launch(float force);
-}
-public class JumpPad : MonoBehaviour
+
+public class JumpPad : MonoBehaviour, IInspectable
 {
     [SerializeField] private float jumpForce;
+    public InspectableData data;
     
     private void Reset()
     {
         jumpForce = 100f;
+        // csv import 선행 작업 필요
+        data = Resources.Load<InspectableData>($"GameObject/Data/{name}");
     }
 
     private void OnCollisionEnter(Collision other)
@@ -30,5 +30,11 @@ public class JumpPad : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public string GetPromptText()
+    {
+        string str = $"\n{data.displayName}\n{data.description}";
+        return str;
     }
 }

@@ -10,8 +10,10 @@ using UnityEngine;
 /// </summary>
 public class CSVImporter 
 {
+    #region Item 생성
     [MenuItem("Tools/CSV Import/Import ItemData")]
-    public static void ImportFromCSV() {
+    
+    public static void ImportFromItemDataCSV() {
         string path = EditorUtility.OpenFilePanel("Select CSV", "", "csv");
         if (string.IsNullOrEmpty(path)) return;
 
@@ -129,5 +131,62 @@ public class CSVImporter
         
         return consumables;
     }
+    #endregion
+
+
+    #region 기타 object 생성
+    [MenuItem("Tools/CSV Import/Import GameObejctData")]
+    public static void ImportFromGameObjectDataCSV()
+    {
+        string path = EditorUtility.OpenFilePanel("Select CSV", "", "csv");
+        if (string.IsNullOrEmpty(path)) return;
+
+        string[] lines = File.ReadAllLines(path);
+        if (lines.Length <= 1) {
+            Debug.LogWarning("CSV has no data.");
+            return;
+        }
+
+        string targetFolder = "Assets/Resources/GameObject/Data";
+        if (!Directory.Exists(targetFolder)) {
+            Directory.CreateDirectory(targetFolder);
+        }
+
+        for (int i = 1; i < lines.Length; i++) {
+            string[] cols = lines[i].Split(',');
+            if (cols.Length < 3) continue;
+
+            string itemCode = cols[0];
+            string itemName = cols[1];
+            string displayName = cols[2];
+            string description = cols[3];
+            
+            string assetPath = $"{targetFolder}/{itemName}.asset";
+
+            // 이미 존재하면 스킵 또는 덮어쓰기
+            var existing = AssetDatabase.LoadAssetAtPath<InspectableData>(assetPath);
+            if (existing != null) {
+                existing.code =  itemCode;
+                existing.displayName = displayName;
+                existing.description = description;
+                
+                EditorUtility.SetDirty(existing);
+                continue;
+            }
+            var item = ScriptableObject.CreateInstance<InspectableData>();
+            item.code =  itemCode;
+            item.displayName = displayName;
+            item.description = description;
+
+            AssetDatabase.CreateAsset(item, assetPath);
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        Debug.Log("CSV import completed.");
+    }
+
+    #endregion
+    
 }
 #endif

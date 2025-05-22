@@ -39,22 +39,26 @@ public class PlayerInteractionHandler : MonoBehaviour
     public void InteractInput()
     {
         if (curInteractable != null)
-        {
             curInteractable.OnInteract();
-        }
+        else
+            UIManager.Instance.ShowDescriptionPrompt("상호작용할 수 있는 대상이 아닙니다");
     }
     
-    // 상호작용 후처리
-    private void InteractChanged(IInteractable interactable)
+    // 상호작용 가까이 갔을 때
+    private void InteractChanged(IInspectable inspectable)
     {
-        curInteractable = interactable;
-        if (interactable != null)
+        if (inspectable != null)
         {
-            UIManager.Instance.ShowDescriptionPrompt(curInteractable.GetPromptText());
+            UIManager.Instance.ShowDescriptionPrompt(inspectable.GetPromptText());
+            
+            // 상호작용 대상 설정
+            // interactable이 아니면 null로 명확히 초기화
+            curInteractable = inspectable is IInteractable interactable ? interactable : null;
         }
         else
         {
             UIManager.Instance.HideDescriptionPrompt();
+            curInteractable = null;
         }
     }
     

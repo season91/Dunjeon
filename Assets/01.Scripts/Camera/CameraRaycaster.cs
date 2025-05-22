@@ -18,10 +18,11 @@ public class CameraRaycaster : MonoBehaviour
     public LayerMask layerMask; // 어떤 레이어 추출한건지 - Player 제외한 모두로 설정함
 
     // 상호 작용 아이템 정보
-    private GameObject curInteractGameObject; // 현재 상호작용 아이템
+    private GameObject curInpectGameObject; // 현재 상호작용 아이템 설명만
+    private GameObject curInteractGameObject; // 현재 상호작용 아이템 E 포함
 
     // 상호 작용 델리게이트
-    public event Action<IInteractable> OnInteractChanged;
+    public event Action<IInspectable> OnInteractChanged;
 
     private void Awake()
     {
@@ -33,32 +34,29 @@ public class CameraRaycaster : MonoBehaviour
         if (Time.time - lastCheckTime > checkRate) // 매프레임 호출 방지를 위해 마지막 체크 시간 기준으로 검증
         {
             lastCheckTime = Time.time;
-            Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-            Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red);
-            
-            if (Physics.Raycast(ray, out RaycastHit hit, maxCheckDistance, layerMask))
-            {
-                //Vector3 screenPosition = _camera.WorldToScreenPoint(hit.point);
-                //UIManager.Instance.SetAimPosition(screenPosition);
-                
-                DrawCircle(hit.point, 0.15f, Color.blue);
+            CheckForInteractable();
+        }
+    }
+
+
+    private void CheckForInteractable()
+    {
+        Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+        Debug.DrawRay(ray.origin, ray.direction * maxCheckDistance, Color.red);
+
+        if (!Physics.Raycast(ray, out RaycastHit hit, maxCheckDistance, layerMask))
+        {
+            curInteractGameObject = null;
+            OnInteractChanged?.Invoke(null);
+            return;
+        }
         
-                // 충돌시 아이템이 현재인터렉터블 아이템에 존재하지 않는다면
-                if(hit.collider.gameObject != curInteractGameObject && hit.collider.GetComponent<IInteractable>() is IInteractable interactable)
-                {
-                    curInteractGameObject = hit.collider.gameObject;
-                    OnInteractChanged?.Invoke(interactable);
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else // 걸린게 없을 때, 정보 없애주기
-            {
-                curInteractGameObject = null;
-                OnInteractChanged?.Invoke(null);
-            }
+        DrawCircle(hit.point, 0.15f, Color.blue);
+        
+        if(hit.collider.gameObject != curInteractGameObject && hit.collider.GetComponent<IInspectable>() is IInspectable inspectable)
+        {
+            curInteractGameObject = hit.collider.gameObject;
+            OnInteractChanged?.Invoke(inspectable);
         }
     }
     
