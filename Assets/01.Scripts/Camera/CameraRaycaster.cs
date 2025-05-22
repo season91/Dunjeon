@@ -38,7 +38,6 @@ public class CameraRaycaster : MonoBehaviour
         }
     }
 
-
     private void CheckForInteractable()
     {
         Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));

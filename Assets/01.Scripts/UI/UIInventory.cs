@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -154,7 +155,7 @@ public class UIInventory : MonoBehaviour
     {
         if (selectedItemData.type == ItemType.Consumable)
         {
-            InventoryManager.UseItem(selectedItemData);
+            CharacterManager.Player.statusHandler.UseItem(selectedItemData);
         }
     }
     

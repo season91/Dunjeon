@@ -20,23 +20,10 @@ public static class InventoryManager
         UIManager.Instance.InventoryRefresh(inventoryItems);
     }
     
-    // 아이템 사용
-    public static void UseItem(ItemData item)
+    // 아이템 버리기
+    public static void RemoveItem(ItemData item)
     {
-        for (int i = 0; i < item.consumables.Length; i++)
-        {
-            switch (item.consumables[i].type)
-            {
-                case ConsumableType.Health:
-                    CharacterManager.Player.statusHandler.Heal(item.consumables[i].value);
-                    break;
-                case ConsumableType.Hunger:
-                    CharacterManager.Player.statusHandler.Hunger(item.consumables[i].value);
-                    break;
-            }
-        }
+        inventoryItems.Remove(item);
     }
-    
-    // 아이템 장착
-    
+
 }

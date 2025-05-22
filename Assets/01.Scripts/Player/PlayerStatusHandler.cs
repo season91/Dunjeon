@@ -65,4 +65,24 @@ public class PlayerStatusHandler : MonoBehaviour
 
         hungerCoroutine = null;
     }
+        
+    // 아이템 사용
+    public void UseItem(ItemData item)
+    {
+        for (int i = 0; i < item.consumables.Length; i++)
+        {
+            switch (item.consumables[i].type)
+            {
+                case ConsumableType.Health:
+                    Heal(item.consumables[i].value);
+                    break;
+                case ConsumableType.Hunger:
+                    Hunger(item.consumables[i].value);
+                    break;
+            }
+        }
+    }
+    
+    // 아이템 장착
+
 }
