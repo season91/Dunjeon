@@ -5417,6 +5417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Cupcake
       objectReference: {fileID: 0}
+    - target: {fileID: 4120336447695852515, guid: 4954b759dc9b9a34e9a27295c082154b, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: e3613826c47737d41be4ebed974336d6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7076,6 +7080,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4106175948952517485, guid: be31f9aa0c96394428cc4c2c1bb1c279, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 98931234a1ac72340b96d1cb0e9c8623, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7935,6 +7943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2206809231806321352, guid: 5c76abfff7fdc16429c123a469b925dd, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: fc0ec500811371745adf3f1c1e9bc1dc, type: 2}
     - target: {fileID: 4315102410168397973, guid: 5c76abfff7fdc16429c123a469b925dd, type: 3}
       propertyPath: m_Name
       value: Item_Flower
@@ -8113,6 +8125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5260430774119143344, guid: dcf16b7942839b64ebad2741657fa4a3, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: ead1509fec429f14b9c86d9df665876a, type: 2}
     - target: {fileID: 6960267684563724751, guid: dcf16b7942839b64ebad2741657fa4a3, type: 3}
       propertyPath: m_Name
       value: Item_Wood
@@ -8272,6 +8288,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 3661288043813126922, guid: 3a557540821d23642a8016e94d7309c9, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: c1686e24a1354e2479d525e97a1aad70, type: 2}
     - target: {fileID: 7388298093727750760, guid: 3a557540821d23642a8016e94d7309c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.5
@@ -9083,6 +9103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Ax
       objectReference: {fileID: 0}
+    - target: {fileID: 2206572262092966706, guid: e7f8ab7d9c6f22e4b80d95b5d54356e7, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 988152922df2a6446828fb72b0d931cd, type: 2}
     - target: {fileID: 3001242297263192071, guid: e7f8ab7d9c6f22e4b80d95b5d54356e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9
