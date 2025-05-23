@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// UIManager 싱글톤
+/// [전역-싱글톤] UIManager. UI Show, Hide
 /// </summary>
 public class UIManager : MonoBehaviour
 {
@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
     
     // 인벤토리 열기
     public void ToggleInventory() => inventory.Toggle();
+    public bool IsInventoryOpen() => inventory.IsOpen();
     
     // 인벤토리 UI refresh
     public void InventoryRefresh(List<ItemData> inventoryItems) => inventory.UpdateInventoryUI(inventoryItems);

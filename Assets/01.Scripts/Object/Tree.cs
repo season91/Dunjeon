@@ -1,5 +1,7 @@
 using UnityEngine;
-
+/// <summary>
+/// [컴포넌트]
+/// </summary>
 public class Tree : MonoBehaviour, IInspectable
 {
     public InspectableData data;

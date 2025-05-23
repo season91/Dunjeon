@@ -5,8 +5,6 @@ using UnityEngine;
 /// </summary>
 
 // 상호작용 시스템은 주로 인터페이스 기반으로 출력, E키 상호작용 한다고 함
-
-
 public class ItemObject : MonoBehaviour, IInteractable
 {
     public ItemData data;

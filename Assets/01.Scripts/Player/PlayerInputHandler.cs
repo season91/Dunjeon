@@ -37,11 +37,7 @@ public class PlayerInputHandler : MonoBehaviour
         interaction = _playerInput.actions["Interaction"];
         inventory = _playerInput.actions["Inventory"];
 
-        move.Enable();
-        look.Enable();
-        jump.Enable();
-        interaction.Enable();
-        inventory.Enable();
+        EnableInputAction();
     }
 
     private void Start()
@@ -53,14 +49,23 @@ public class PlayerInputHandler : MonoBehaviour
         interaction.performed += OnInteractionPerformed;
         inventory.performed += OnInventoryPerformed;
     }
+    
+    public void EnableInputAction()
+    {
+        move.Enable();
+        look.Enable();
+        jump.Enable();
+        interaction.Enable();
+        inventory.Enable();
+    }
 
-    private void DisableInputAction()
+    public void DisableInputAction()
     {
         move.Disable();
         look.Disable();
         jump.Disable();
         interaction.Disable();
-        inventory.Disable();
+        // inventory.Disable();
     }
 
     private void RemoveInputAction()

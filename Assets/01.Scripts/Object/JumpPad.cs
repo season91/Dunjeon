@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
-
+/// <summary>
+/// [컴포넌트]
+/// </summary>
 
 public class JumpPad : MonoBehaviour, IInspectable
 {

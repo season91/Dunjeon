@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+/// <summary>
+/// [전역] 캐릭터 등록, 캐릭터 조회
+/// </summary>
 public static class CharacterManager
 {
     // 캐릭터 등록 전용 클래스
