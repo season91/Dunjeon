@@ -108,12 +108,12 @@ public class PlayerController : NetworkBehaviour, IJumpable
     public override void FixedUpdateNetwork()
     {
         if (!Object.HasInputAuthority) return; // 본인 플레이어만 조작
-        FusionMove();
+        Move();
     }
 
     #region 움직임 관련
 
-    private void FusionMove()
+    private void Move()
     {
         Vector3 direction = playerTransform.forward * playerInput.MoveInput.y + playerTransform.right * playerInput.MoveInput.x;
         direction *= moveSpeed; // 방향에 힘 적용
@@ -133,17 +133,10 @@ public class PlayerController : NetworkBehaviour, IJumpable
     // 실제 회전 처리 마우스 방향으로 -> 3인칭으로 수정
     private void Look(Vector2 mouseDelta)
     {
-        if (UIManager.Instance.IsInventoryOpen()) return;
-        if (mouseDelta.sqrMagnitude < 0.0001f) return;
         camCurXRot += mouseDelta.y * lookSensitivity;
         camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook);
-
-        // 좌우 회전 (캐릭터 전체)
-        playerTransform.Rotate(Vector3.up * mouseDelta.x * lookSensitivity);
-
-        // 상하 회전만 cameraFollowTarget에 적용
-        Vector3 newAngles = new Vector3(-camCurXRot, 0f, 0f); // Y, Z = 0 고정
-        cameraFollowTarget.localEulerAngles = newAngles;
+        cameraFollowTarget.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
+        playerTransform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0); // 위,아래 캐릭터 각도 회전
     }
     
     private void LocalLook(Vector2 mouseDelta)
