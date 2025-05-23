@@ -96,5 +96,4 @@ crashlytics-build.properties
 .idea/runConfigurations/
 
 # Ignore Photon Fusion settings
-Assets/Photon/Fusion/Resources/PhotonAppSettings.asset
-Assets/Photon/Fusion/Resources/NetworkProjectConfig.asset
+Assets/Photon/Fusion/Resources/*
